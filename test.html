@@ -1,0 +1,200 @@
+<div id='product-component-1694086152503'></div>
+<script type="text/javascript">
+    /*<![CDATA[*/
+    (function () {
+        var scriptURL = 'tmp/buybutton.dev.js';
+        if (window.ShopifyBuy) {
+            if (window.ShopifyBuy.UI) {
+                ShopifyBuyInit();
+            } else {
+                loadScript();
+            }
+        } else {
+            loadScript();
+        }
+        function loadScript() {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = scriptURL;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+            script.onload = ShopifyBuyInit;
+        }
+        function ShopifyBuyInit() {
+            var client = ShopifyBuy.buildClient({
+                domain: 'levelokaal.myshopify.com',
+                storefrontAccessToken: '7e6579fe141ed4fd01f60d8edf872969',
+            });
+            console.log(ShopifyBuy.UI.init)
+            const ui = ShopifyBuy.UI.init(client);
+            ui.createComponent('product', {
+                id: '4555951865909',
+                node: document.getElementById('product-component-1694086152503'),
+                moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
+                options: {
+                    "product": {
+                        "styles": {
+                            "product": {
+                                "@media (min-width: 601px)": {
+                                    "max-width": "calc(25% - 20px)",
+                                    "margin-left": "20px",
+                                    "margin-bottom": "50px"
+                                }
+                            },
+                            "button": {
+                                "font-weight": "bold",
+                                ":hover": {
+                                    "background-color": "#41a298"
+                                },
+                                "background-color": "#48b4a9",
+                                ":focus": {
+                                    "background-color": "#41a298"
+                                },
+                                "border-radius": "2px",
+                                "padding-left": "75px",
+                                "padding-right": "75px"
+                            }
+                        },
+                        "text": {
+                            "button": "PLAATS IN SKWINKELMAND"
+                        },
+                        "contents": {
+                            "img": true,
+                            "title": false,
+                            "price": false,
+                            "properties": true,
+                        },
+                        "templates": {
+                            "properties":
+                                `<span style="margin-top: 10px; display: inline-block;">
+ <b>Boodschap voor de ontvanger</b></span>
+ <br/><span style="margin-top: 10px; display: inline-block;">Afzender:</span><br/>
+ <input id="message-for-recipient-sender" name="properties[Afzender]" type="text" maxlength="22" placeholder="Dit komt zo op de bon: Van ..." style="width: 100%;"/>
+<br/><span style="margin-top: 10px; display: inline-block;">Boodschap:</span><br/>
+ <textarea id="message-for-recipient" name="properties[Boodschap]" placeholder="Deze boodschap komt op de bon" maxlength="150" style="width: 100%;" rows=5></textarea>`
+                        },
+                        "order": [
+                            'img',
+                            'title',
+                            'price',
+                            'quantity',
+                            'options',
+                            'properties',
+                            'button',
+                        ],
+                    },
+                    "productSet": {
+                        "styles": {
+                            "products": {
+                                "@media (min-width: 601px)": {
+                                    "margin-left": "-20px"
+                                }
+                            }
+                        }
+                    },
+                    "modalProduct": {
+                        "contents": {
+                            "img": false,
+                            "imgWithCarousel": true,
+                            "button": false,
+                            "buttonWithQuantity": true
+                        },
+                        "styles": {
+                            "product": {
+                                "@media (min-width: 601px)": {
+                                    "max-width": "100%",
+                                    "margin-left": "0px",
+                                    "margin-bottom": "0px"
+                                }
+                            },
+                            "button": {
+                                "font-weight": "bold",
+                                ":hover": {
+                                    "background-color": "#41a298"
+                                },
+                                "background-color": "#48b4a9",
+                                ":focus": {
+                                    "background-color": "#41a298"
+                                },
+                                "border-radius": "2px",
+                                "padding-left": "75px",
+                                "padding-right": "75px"
+                            }
+                        },
+                        "text": {
+                            "button": "Add to cart"
+                        }
+                    },
+                    "option": {
+                        "styles": {
+                            "label": {
+                                "font-family": "Open Sans, sans-serif"
+                            },
+                            "select": {
+                                "font-family": "Open Sans, sans-serif"
+                            }
+                        },
+                        "googleFonts": [
+                            "Open Sans"
+                        ]
+                    },
+                    "cart": {
+                        "styles": {
+                            "button": {
+                                "font-weight": "bold",
+                                ":hover": {
+                                    "background-color": "#41a298"
+                                },
+                                "background-color": "#48b4a9",
+                                ":focus": {
+                                    "background-color": "#41a298"
+                                },
+                                "border-radius": "2px"
+                            },
+                            "lineItems": {
+                                "color": "#5d5d5d",
+                                // "templates": {
+                                //     "customAttributes": '{{#data.customAttributes}}<div><small>{{key}}: {{value}}</small></div>{{/data.customAttributes}}'
+                                // },
+                                "contents": {
+                                    "customAttributes": true
+                                },
+                                "order": [
+                                    'image',
+                                    'title',
+                                    'variantTitle',
+                                    'customAttributes',
+                                    'price',
+                                    'priceWithDiscounts',
+                                    'quantity',
+                                ],
+                            }
+                        },
+                        "text": {
+                            "title": "SKWINKELMAND",
+                            "total": "TOTAAL",
+                            "empty": "Oeps, je winkelmand is leeg.",
+                            "notice": "Mogelijke kortingscodes worden toegepast bij het afrekenen.",
+                            "button": "AFREKENEN"
+                        }
+                    },
+                    "toggle": {
+                        "styles": {
+                            "toggle": {
+                                "font-weight": "bold",
+                                "background-color": "#48b4a9",
+                                ":hover": {
+                                    "background-color": "#41a298"
+                                },
+                                ":focus": {
+                                    "background-color": "#41a298"
+                                }
+                            }
+                        }
+                    }
+                },
+            });
+        }
+    })();
+    /*]]>*/
+</script>
+

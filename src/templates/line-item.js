@@ -1,7 +1,9 @@
 const lineItemTemplates = {
   image: '<div class="{{data.classes.lineItem.image}}" style="background-image: url({{data.lineItemImage}})" data-element="lineItem.image"></div>',
-  variantTitle: '<div class="{{data.classes.lineItem.variantTitle}}" data-element="lineItem.variantTitle">{{data.variantTitle}}</div>',
-
+  variantTitle: `<div class="{{data.classes.lineItem.variantTitle}}" data-element="lineItem.variantTitle">
+{{data.variantTitle}}
+<div class="{{data.classes.lineItem.customAttributes}}">{{#data.customAttributes}}<div><small>{{key}}: {{value}}</small></div>{{/data.customAttributes}}</div>
+</div>`,
   title: '<span class="{{data.classes.lineItem.itemTitle}}" data-element="lineItem.itemTitle">{{data.title}}</span>',
   price: '<span class="{{data.classes.lineItem.price}}" data-element="lineItem.price">{{data.formattedPrice}}</span>',
   priceWithDiscounts: `<div class="{{data.classes.lineItem.priceWithDiscounts}}" data-element="lineItem.price">

@@ -651,7 +651,15 @@ export default class Product extends Component {
     } else if (this.options.buttonDestination === 'cart') {
       this.props.closeModal();
       this._userEvent('addVariantToCart');
-      this.props.tracker.trackMethod(this.cart.addVariantToCart.bind(this), 'Update Cart', this.selectedVariantTrackingInfo)(this.selectedVariant, this.selectedQuantity);
+      const customAttributes = [];
+      for (const element of target.closest('body').querySelectorAll('[name^="properties["]')) {
+        customAttributes.push({
+          key: element.name.match(/[^[\]]+(?=])/g)[0],
+          value: element.value,
+        });
+      }
+
+      this.props.tracker.trackMethod(this.cart.addVariantToCart.bind(this), 'Update Cart', this.selectedVariantTrackingInfo)(this.selectedVariant, this.selectedQuantity, true, customAttributes);
       if (!this.modalProduct) {
         this.props.setActiveEl(target);
       }
